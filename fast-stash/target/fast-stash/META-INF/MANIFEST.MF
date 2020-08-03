@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Built-By: Max
+Created-By: Apache Maven
+Build-Jdk: 14.0.2
+Extension-Name: fast-stash
+Specification-Title: The Jenkins Plugins Parent POM Project
+Implementation-Title: fast-stash
+Implementation-Version: 3.0
+Group-Id: io.jenkins.plugins
+Short-Name: fast-stash
+Long-Name: Fast-Stash Plugin
+Minimum-Java-Version: 1.8
+Plugin-Version: 3.0
+Hudson-Version: 2.164.3
+Jenkins-Version: 2.164.3
+Plugin-Dependencies: workflow-step-api:2.20,structs:1.20
+Plugin-Developers: 
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-ScmUrl: https://github.com/jenkinsci/plugin-pom/fast-stash
+

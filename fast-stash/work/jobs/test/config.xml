@@ -1,0 +1,26 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.35">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.74">
+    <script>node{
+    sh &quot;mkdir -p output&quot;
+    writeFile file: &quot;output/somefile&quot;, text: &quot;Hello World!&quot;
+    sh &apos;base64 /dev/urandom | head -c 10000000000 &gt; output/testFile.txt&apos;
+    echo &apos;####  TEST1 ####&apos;
+    sh &apos;date +%s&apos;
+    stash name: &quot;first-stash&quot;, includes: &quot;output/*&quot;
+}
+node{
+    unstash &quot;first-stash&quot;
+    sh &apos;date +%s&apos;
+    echo &apos;####  ####  ####&apos;
+}
+</script>
+    <sandbox>false</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

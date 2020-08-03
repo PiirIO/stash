@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Group-Id: io.jenkins.plugins
+Short-Name: fast-stash
+Long-Name: Fast-Stash Plugin
+Minimum-Java-Version: 1.8
+Plugin-Version: 3.0
+Hudson-Version: 2.164.3
+Jenkins-Version: 2.164.3
+Plugin-Dependencies: workflow-step-api:2.20,structs:1.20
+Plugin-Developers: 
+Plugin-License-Name: MIT License
+Plugin-License-Url: https://opensource.org/licenses/MIT
+Plugin-ScmUrl: https://github.com/jenkinsci/plugin-pom/fast-stash
+Libraries: C:\Users\Max\Documents\GitHub\stash\fast-stash\target\class
+ es,C:\Users\Max\.m2\repository\com\google\code\findbugs\annotations\3
+ .0.0\annotations-3.0.0.jar,C:\Users\Max\.m2\repository\org\anarres\lz
+ o\lzo-core\1.0.6\lzo-core-1.0.6.jar
+Resource-Path: C:\Users\Max\Documents\GitHub\stash\fast-stash\src\main
+ \webapp
+
