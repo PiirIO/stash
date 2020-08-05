@@ -11,7 +11,6 @@ import org.kohsuke.stapler.DataBoundSetter;
 
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
@@ -24,19 +23,16 @@ public class FastStashStep extends Step {
     String includes;
     private @CheckForNull
     String excludes;
-    private @CheckForNull
-    String compression;
+    private String compression;
     //Allowed types for compression
     private final String[] COMPRESSION_TYPES = {"LZO1X"};
     private boolean useDefaultExcludes = true;
     private boolean allowEmpty = false;
 
     @DataBoundConstructor
-    public FastStashStep(@Nonnull String name, @CheckForNull String exclude, String compression) {
+    public FastStashStep(@Nonnull String name) {
         Jenkins.checkGoodName(name);
         this.name = name;
-        this.excludes = exclude;
-        this.compression = (Arrays.stream(this.COMPRESSION_TYPES).anyMatch(compression.trim().toUpperCase()::equals)) ? compression : null;
     }
 
     public String getName() {
@@ -50,6 +46,16 @@ public class FastStashStep extends Step {
     @DataBoundSetter
     public void setIncludes(String includes) {
         this.includes = Util.fixEmpty(includes);
+    }
+
+    @DataBoundSetter
+    public void setExcludes(String excludes) {
+        this.excludes = Util.fixEmpty(excludes);
+    }
+
+    @DataBoundSetter
+    public void setCompression(String compression){
+        this.compression = (Arrays.asList(this.COMPRESSION_TYPES).contains(Util.fixEmpty(compression.toUpperCase()))) ? compression : null;
     }
 
     @Override
@@ -99,7 +105,6 @@ public class FastStashStep extends Step {
         @Override
         public String argumentsToString(Map<String, Object> namedArgs) {
             Object name = namedArgs.get("name");
-            Object compression = namedArgs.get("compression");
             return name instanceof String ? (String) name : null;
         }
 

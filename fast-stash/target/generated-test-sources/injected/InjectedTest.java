@@ -8,11 +8,11 @@ public class InjectedTest extends junit.framework.TestCase {
   public static junit.framework.Test suite() throws Exception {
     System.out.println("Running tests for "+"io.jenkins.plugins:fast-stash:3.0");
     Map<String, Object> parameters = new HashMap<String, Object>();
-    parameters.put("basedir","C:\\Users\\Max\\Documents\\GitHub\\stash\\fast-stash");
+    parameters.put("basedir","/home/max/git/stash/fast-stash");
     parameters.put("artifactId","fast-stash");
     parameters.put("packaging","hpi");
-    parameters.put("outputDirectory","C:\\Users\\Max\\Documents\\GitHub\\stash\\fast-stash\\target\\classes");
-    parameters.put("testOutputDirectory","C:\\Users\\Max\\Documents\\GitHub\\stash\\fast-stash\\target\\test-classes");
+    parameters.put("outputDirectory","/home/max/git/stash/fast-stash/target/classes");
+    parameters.put("testOutputDirectory","/home/max/git/stash/fast-stash/target/test-classes");
     parameters.put("requirePI","true");
     return org.jvnet.hudson.test.PluginAutomaticTestBuilder.build(parameters);
   }

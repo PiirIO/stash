@@ -69,16 +69,14 @@ public class FastStashManager {
             if (!storage.isFile()) {
                 throw new AbortException("No such saved stash ‘" + name + "’");
             } else {
-                if(compression.equals(null)){
-                    new FilePath(storage);
-                } else if(compression.equals("LZO1X")){
+                if(compression.equals("LZO1X")){
                     InputStream in = new FileInputStream(storage);
                     LzoAlgorithm alg = LzoAlgorithm.LZO1X;
                     LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(alg, null);
                     LzoInputStream stream = new LzoInputStream(in, decompressor);
                     stream.read();
-                    new FilePath(storage);
                 }
+                new FilePath(storage);
             }
         }
     }

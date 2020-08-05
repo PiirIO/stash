@@ -1,3 +1,3 @@
-C:\Users\Max\Desktop\fast-stash1\fast-stash\src\main\java\io\jenkins\plugins\fastStash\FastStashManager.java
-C:\Users\Max\Desktop\fast-stash1\fast-stash\src\main\java\io\jenkins\plugins\fastStash\FastStashStep.java
-C:\Users\Max\Desktop\fast-stash1\fast-stash\src\main\java\io\jenkins\plugins\fastStash\FastUnstashStep.java
+/home/max/git/stash/fast-stash/src/main/java/io/jenkins/plugins/fastStash/FastStashStep.java
+/home/max/git/stash/fast-stash/src/main/java/io/jenkins/plugins/fastStash/FastStashManager.java
+/home/max/git/stash/fast-stash/src/main/java/io/jenkins/plugins/fastStash/FastUnstashStep.java

@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: Max
+Built-By: max
 Created-By: Apache Maven
 Build-Jdk: 14.0.2
 Extension-Name: fast-stash
