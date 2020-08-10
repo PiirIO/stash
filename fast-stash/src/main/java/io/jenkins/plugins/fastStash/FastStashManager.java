@@ -1,17 +1,19 @@
 package io.jenkins.plugins.fastStash;
 
-import edu.umd.cs.findbugs.annotations.*;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import hudson.*;
-import hudson.model.*;
-import hudson.util.*;
-import hudson.util.io.*;
-import jenkins.model.*;
+import hudson.model.Run;
+import hudson.model.TaskListener;
+import hudson.util.DirScanner;
+import hudson.util.io.ArchiverFactory;
+import jenkins.model.ArtifactManager;
+import jenkins.model.Jenkins;
 import org.anarres.lzo.*;
-import org.kohsuke.accmod.*;
-import org.kohsuke.accmod.restrictions.*;
+import org.kohsuke.accmod.Restricted;
+import org.kohsuke.accmod.restrictions.Beta;
 
 import javax.annotation.CheckForNull;
-import javax.annotation.*;
+import javax.annotation.Nonnull;
 import java.io.*;
 
 
@@ -24,7 +26,7 @@ public class FastStashManager {
             value = {"RV_RETURN_VALUE_IGNORED_BAD_PRACTICE"},
             justification = "fine if mkdirs returns false"
     )
-    public static void stash(@Nonnull Run<?, ?> build, @Nonnull String name, @Nonnull FilePath workspace, @Nonnull Launcher launcher, @Nonnull EnvVars env, @Nonnull TaskListener listener, @CheckForNull String includes, @CheckForNull String excludes, boolean useDefaultExcludes, boolean allowEmpty, String compression) throws IOException, InterruptedException {
+    public static void stash(@Nonnull Run<?, ?> build, @Nonnull String name, @Nonnull FilePath workspace, @Nonnull Launcher launcher, @Nonnull EnvVars env, @Nonnull TaskListener listener, @CheckForNull String includes, @CheckForNull String excludes, boolean useDefaultExcludes, boolean allowEmpty, Compression compression) throws IOException, InterruptedException {
         Jenkins.checkGoodName(name);
 
         FastStashManager.StashAwareArtifactManager saam = stashAwareArtifactManager(build);
@@ -38,28 +40,29 @@ public class FastStashManager {
             }
             try (FileOutputStream os = new FileOutputStream(storage)) {
 
-                if (compression.equals(null)) {
-                    int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
-                    if (count == 0 && !allowEmpty) {
-                        throw new AbortException("No files included in stash ‘" + name + "’");
-                    }
-                    listener.getLogger().println("Stashed " + count + " file(s)");
-
-                } else if (compression.equals("LZO1X")) {
-                    LzoAlgorithm alg = LzoAlgorithm.LZO1X;
-                    LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(alg, null);
-                    LzoOutputStream stream = new LzoOutputStream(os, compressor, 256);
-                    stream.write(256);
-                    if (stream.toString().isEmpty() && !allowEmpty) {
-                        throw new AbortException("No files included in stash ‘" + name + "’");
-                    }
-                    listener.getLogger().println("Stashed " + stream.toString() + " file(s)");
+                switch (compression) {
+                    case LZO1X:
+                        int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
+                        if (count == 0 && !allowEmpty) {
+                            throw new AbortException("No files included in stash ‘" + name + "’");
+                        }
+                        listener.getLogger().println("Stashed " + count + " file(s)");
+                        break;
+                    case NONE:
+                        LzoAlgorithm alg = LzoAlgorithm.LZO1X;
+                        LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(alg, null);
+                        LzoOutputStream stream = new LzoOutputStream(os, compressor, 256);
+                        stream.write(256);
+                        if (stream.toString().isEmpty() && !allowEmpty) {
+                            throw new AbortException("No files included in stash ‘" + name + "’");
+                        }
+                        listener.getLogger().println("Stashed " + stream.toString() + " file(s)");
                 }
             }
         }
     }
 
-    public static void unstash(@Nonnull Run<?, ?> build, @Nonnull String name, @Nonnull FilePath workspace, @Nonnull Launcher launcher, @Nonnull EnvVars env, @Nonnull TaskListener listener, String compression) throws IOException, InterruptedException {
+    public static void unstash(@Nonnull Run<?, ?> build, @Nonnull String name, @Nonnull FilePath workspace, @Nonnull Launcher launcher, @Nonnull EnvVars env, @Nonnull TaskListener listener, Compression compression) throws IOException, InterruptedException {
         Jenkins.checkGoodName(name);
         FastStashManager.StashAwareArtifactManager saam = stashAwareArtifactManager(build);
         if (saam != null) {
@@ -69,7 +72,7 @@ public class FastStashManager {
             if (!storage.isFile()) {
                 throw new AbortException("No such saved stash ‘" + name + "’");
             } else {
-                if(compression.equals("LZO1X")){
+                if (compression == Compression.LZO1X) {
                     InputStream in = new FileInputStream(storage);
                     LzoAlgorithm alg = LzoAlgorithm.LZO1X;
                     LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(alg, null);

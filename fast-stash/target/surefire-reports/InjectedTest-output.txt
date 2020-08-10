@@ -1,61 +1,61 @@
 Running tests for io.jenkins.plugins:fast-stash:3.0
-Aug 05, 2020 3:35:17 PM org.eclipse.jetty.util.log.Log initialized
-INFO: Logging initialized @692ms to org.eclipse.jetty.util.log.Slf4jLog
-Aug 05, 2020 3:35:18 PM org.jvnet.hudson.test.WarExploder explode
+Aug 10, 2020 4:10:35 PM org.eclipse.jetty.util.log.Log initialized
+INFO: Logging initialized @574ms to org.eclipse.jetty.util.log.Slf4jLog
+Aug 10, 2020 4:10:36 PM org.jvnet.hudson.test.WarExploder explode
 INFO: Picking up existing exploded jenkins.war at /home/max/git/stash/fast-stash/target/jenkins-for-test
-Aug 05, 2020 3:35:19 PM org.eclipse.jetty.server.handler.ContextHandler setContextPath
+Aug 10, 2020 4:10:37 PM org.eclipse.jetty.server.handler.ContextHandler setContextPath
 WARNING: Empty contextPath
-Aug 05, 2020 3:35:19 PM org.eclipse.jetty.server.Server doStart
+Aug 10, 2020 4:10:37 PM org.eclipse.jetty.server.Server doStart
 INFO: jetty-9.4.5.v20170502
-Aug 05, 2020 3:35:19 PM org.eclipse.jetty.webapp.StandardDescriptorProcessor visitServlet
+Aug 10, 2020 4:10:37 PM org.eclipse.jetty.webapp.StandardDescriptorProcessor visitServlet
 INFO: NO JSP Support for /, did not find org.eclipse.jetty.jsp.JettyJspServlet
-Aug 05, 2020 3:35:19 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+Aug 10, 2020 4:10:37 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
 INFO: DefaultSessionIdManager workerName=node0
-Aug 05, 2020 3:35:19 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+Aug 10, 2020 4:10:37 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
 INFO: No SessionScavenger set, using defaults
-Aug 05, 2020 3:35:19 PM org.eclipse.jetty.server.session.HouseKeeper startScavenging
-INFO: Scavenging every 600000ms
-Aug 05, 2020 3:35:19 PM org.eclipse.jetty.server.handler.ContextHandler doStart
+Aug 10, 2020 4:10:37 PM org.eclipse.jetty.server.session.HouseKeeper startScavenging
+INFO: Scavenging every 660000ms
+Aug 10, 2020 4:10:37 PM org.eclipse.jetty.server.handler.ContextHandler doStart
 INFO: Started o.e.j.w.WebAppContext@19593091{/,file:///home/max/git/stash/fast-stash/target/jenkins-for-test/,AVAILABLE}{/home/max/git/stash/fast-stash/target/jenkins-for-test}
-Aug 05, 2020 3:35:19 PM org.eclipse.jetty.server.AbstractConnector doStart
-INFO: Started ServerConnector@a50ae65{HTTP/1.1,[http/1.1]}{localhost:36995}
-Aug 05, 2020 3:35:19 PM org.eclipse.jetty.server.Server doStart
-INFO: Started @2202ms
-Aug 05, 2020 3:35:19 PM jenkins.InitReactorRunner$1 onAttained
+Aug 10, 2020 4:10:37 PM org.eclipse.jetty.server.AbstractConnector doStart
+INFO: Started ServerConnector@a50ae65{HTTP/1.1,[http/1.1]}{localhost:35833}
+Aug 10, 2020 4:10:37 PM org.eclipse.jetty.server.Server doStart
+INFO: Started @1965ms
+Aug 10, 2020 4:10:37 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Started initialization
-Aug 05, 2020 3:35:20 PM jenkins.InitReactorRunner$1 onAttained
+Aug 10, 2020 4:10:38 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Listed all plugins
-Aug 05, 2020 3:35:21 PM jenkins.InitReactorRunner$1 onAttained
+Aug 10, 2020 4:10:39 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Prepared all plugins
-Aug 05, 2020 3:35:21 PM jenkins.InitReactorRunner$1 onAttained
+Aug 10, 2020 4:10:39 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Started all plugins
-Aug 05, 2020 3:35:21 PM jenkins.InitReactorRunner$1 onAttained
+Aug 10, 2020 4:10:39 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Augmented all extensions
-Aug 05, 2020 3:35:22 PM jenkins.InitReactorRunner$1 onAttained
+Aug 10, 2020 4:10:39 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Loaded all jobs
-Aug 05, 2020 3:35:22 PM jenkins.InitReactorRunner$1 onAttained
+Aug 10, 2020 4:10:40 PM jenkins.InitReactorRunner$1 onAttained
 INFO: Completed initialization
-Aug 05, 2020 3:35:23 PM org.eclipse.jetty.server.Server doStart
+Aug 10, 2020 4:10:40 PM org.eclipse.jetty.server.Server doStart
 INFO: jetty-9.4.5.v20170502
-Aug 05, 2020 3:35:23 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+Aug 10, 2020 4:10:40 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
 INFO: DefaultSessionIdManager workerName=node0
-Aug 05, 2020 3:35:23 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
+Aug 10, 2020 4:10:40 PM org.eclipse.jetty.server.session.DefaultSessionIdManager doStart
 INFO: No SessionScavenger set, using defaults
-Aug 05, 2020 3:35:23 PM org.eclipse.jetty.server.session.HouseKeeper startScavenging
-INFO: Scavenging every 600000ms
-Aug 05, 2020 3:35:23 PM org.eclipse.jetty.server.handler.ContextHandler doStart
+Aug 10, 2020 4:10:40 PM org.eclipse.jetty.server.session.HouseKeeper startScavenging
+INFO: Scavenging every 660000ms
+Aug 10, 2020 4:10:40 PM org.eclipse.jetty.server.handler.ContextHandler doStart
 INFO: Started o.e.j.s.ServletContextHandler@86733{/,null,AVAILABLE}
-Aug 05, 2020 3:35:23 PM org.eclipse.jetty.server.AbstractConnector doStart
-INFO: Started ServerConnector@7fc7c4a{HTTP/1.1,[http/1.1]}{0.0.0.0:41379}
-Aug 05, 2020 3:35:23 PM org.eclipse.jetty.server.Server doStart
-INFO: Started @5971ms
-Aug 05, 2020 3:35:24 PM org.eclipse.jetty.server.AbstractConnector doStop
+Aug 10, 2020 4:10:40 PM org.eclipse.jetty.server.AbstractConnector doStart
+INFO: Started ServerConnector@7fc7c4a{HTTP/1.1,[http/1.1]}{0.0.0.0:32863}
+Aug 10, 2020 4:10:40 PM org.eclipse.jetty.server.Server doStart
+INFO: Started @5190ms
+Aug 10, 2020 4:10:41 PM org.eclipse.jetty.server.AbstractConnector doStop
 INFO: Stopped ServerConnector@a50ae65{HTTP/1.1,[http/1.1]}{localhost:0}
-Aug 05, 2020 3:35:24 PM org.eclipse.jetty.server.session.HouseKeeper stopScavenging
+Aug 10, 2020 4:10:41 PM org.eclipse.jetty.server.session.HouseKeeper stopScavenging
 INFO: Stopped scavenging
-Aug 05, 2020 3:35:24 PM org.eclipse.jetty.server.handler.ContextHandler doStop
+Aug 10, 2020 4:10:41 PM org.eclipse.jetty.server.handler.ContextHandler doStop
 INFO: Stopped o.e.j.w.WebAppContext@19593091{/,file:///home/max/git/stash/fast-stash/target/jenkins-for-test/,UNAVAILABLE}{/home/max/git/stash/fast-stash/target/jenkins-for-test}
-Aug 05, 2020 3:35:24 PM jenkins.model.Jenkins cleanUp
+Aug 10, 2020 4:10:41 PM jenkins.model.Jenkins cleanUp
 INFO: Stopping Jenkins
-Aug 05, 2020 3:35:25 PM jenkins.model.Jenkins cleanUp
+Aug 10, 2020 4:10:42 PM jenkins.model.Jenkins cleanUp
 INFO: Jenkins stopped

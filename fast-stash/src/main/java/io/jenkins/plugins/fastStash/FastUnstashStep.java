@@ -9,17 +9,12 @@ import hudson.FilePath;
 import hudson.Launcher;
 import hudson.model.Run;
 import hudson.model.TaskListener;
-
-import java.util.Set;
-import javax.annotation.Nonnull;
-
 import jenkins.model.Jenkins;
-import org.jenkinsci.plugins.workflow.steps.Step;
-import org.jenkinsci.plugins.workflow.steps.StepContext;
-import org.jenkinsci.plugins.workflow.steps.StepDescriptor;
-import org.jenkinsci.plugins.workflow.steps.StepExecution;
-import org.jenkinsci.plugins.workflow.steps.SynchronousNonBlockingStepExecution;
+import org.jenkinsci.plugins.workflow.steps.*;
 import org.kohsuke.stapler.DataBoundConstructor;
+
+import javax.annotation.Nonnull;
+import java.util.Set;
 
 public class FastUnstashStep extends Step {
 
@@ -55,7 +50,8 @@ public class FastUnstashStep extends Step {
 
         @Override
         protected Void run() throws Exception {
-            FastStashManager.unstash(getContext().get(Run.class), name, getContext().get(FilePath.class), getContext().get(Launcher.class), getContext().get(EnvVars.class), getContext().get(TaskListener.class), null);
+            // Todo: Compressor.None for testing State
+            FastStashManager.unstash(getContext().get(Run.class), name, getContext().get(FilePath.class), getContext().get(Launcher.class), getContext().get(EnvVars.class), getContext().get(TaskListener.class), Compression.NONE);
             return null;
         }
 

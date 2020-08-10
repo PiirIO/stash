@@ -11,7 +11,6 @@ import org.kohsuke.stapler.DataBoundSetter;
 
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 
@@ -23,11 +22,11 @@ public class FastStashStep extends Step {
     String includes;
     private @CheckForNull
     String excludes;
-    private String compression;
-    //Allowed types for compression
-    private final String[] COMPRESSION_TYPES = {"LZO1X"};
-    private boolean useDefaultExcludes = true;
-    private boolean allowEmpty = false;
+
+    private final boolean useDefaultExcludes = true;
+    private final boolean allowEmpty = false;
+
+    private Compression compression;
 
     @DataBoundConstructor
     public FastStashStep(@Nonnull String name) {
@@ -54,8 +53,12 @@ public class FastStashStep extends Step {
     }
 
     @DataBoundSetter
-    public void setCompression(String compression){
-        this.compression = (Arrays.asList(this.COMPRESSION_TYPES).contains(Util.fixEmpty(compression.toUpperCase()))) ? compression : null;
+    public void setCompression(Compression compression) {
+        if (compression != null) {
+            this.compression = compression;
+        } else {
+            this.compression = Compression.NONE;
+        }
     }
 
     @Override
@@ -77,10 +80,9 @@ public class FastStashStep extends Step {
         @Override
         protected Void run() throws Exception {
             FastStashManager.stash(getContext().get(Run.class), step.name, getContext().get(FilePath.class), getContext().get(Launcher.class), getContext().get(EnvVars.class), getContext().get(TaskListener.class), step.includes, step.excludes,
-                    step.useDefaultExcludes, step.allowEmpty, null);
+                    step.useDefaultExcludes, step.allowEmpty, this.step.compression);
             return null;
         }
-
     }
 
     @Extension
@@ -107,7 +109,5 @@ public class FastStashStep extends Step {
             Object name = namedArgs.get("name");
             return name instanceof String ? (String) name : null;
         }
-
     }
-
 }
