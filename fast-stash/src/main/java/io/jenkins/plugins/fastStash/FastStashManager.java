@@ -39,16 +39,8 @@ public class FastStashManager {
                 listener.getLogger().println("Warning: overwriting stash ‘" + name + "’");
             }
             try (FileOutputStream os = new FileOutputStream(storage)) {
-
                 switch (compression) {
                     case LZO1X:
-                        int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
-                        if (count == 0 && !allowEmpty) {
-                            throw new AbortException("No files included in stash ‘" + name + "’");
-                        }
-                        listener.getLogger().println("Stashed " + count + " file(s)");
-                        break;
-                    case NONE:
                         LzoAlgorithm alg = LzoAlgorithm.LZO1X;
                         LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(alg, null);
                         LzoOutputStream stream = new LzoOutputStream(os, compressor, 256);
@@ -57,6 +49,13 @@ public class FastStashManager {
                             throw new AbortException("No files included in stash ‘" + name + "’");
                         }
                         listener.getLogger().println("Stashed " + stream.toString() + " file(s)");
+                        break;
+                    case NONE:
+                        int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
+                        if (count == 0 && !allowEmpty) {
+                            throw new AbortException("No files included in stash ‘" + name + "’");
+                        }
+                        listener.getLogger().println("Stashed " + count + " file(s)");
                 }
             }
         }
