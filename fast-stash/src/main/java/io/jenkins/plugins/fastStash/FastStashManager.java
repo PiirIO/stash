@@ -38,6 +38,9 @@ public class FastStashManager {
             if (storage.isFile()) {
                 listener.getLogger().println("Warning: overwriting stash ‘" + name + "’");
             }
+            if(compression == null){
+                compression = Compression.LZO1X;
+            }
             try (FileOutputStream os = new FileOutputStream(storage)) {
                 switch (compression) {
                     case LZO1X:
@@ -48,7 +51,7 @@ public class FastStashManager {
                         if (stream.toString().isEmpty() && !allowEmpty) {
                             throw new AbortException("No files included in stash ‘" + name + "’");
                         }
-                        listener.getLogger().println("Stashed " + stream.toString() + " file(s)");
+                        listener.getLogger().println("Stashed file(s)");
                         break;
                     case NONE:
                         int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));

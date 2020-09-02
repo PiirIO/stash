@@ -53,9 +53,9 @@ public class FastStashStep extends Step {
     }
 
     @DataBoundSetter
-    public void setCompression(Compression compression) {
+    public void setCompression(Integer compression) {
         if (compression != null) {
-            this.compression = compression;
+            this.compression = Compression.LZO1X;
         } else {
             this.compression = Compression.NONE;
         }
