@@ -1,3 +1,4 @@
 # informational; use java -jar sezpoz.jar to see authoritative contents
+io.jenkins.plugins.fastStash.FastStashManager$CopyStashesAndArtifacts
 io.jenkins.plugins.fastStash.FastStashStep$DescriptorImpl
 io.jenkins.plugins.fastStash.FastUnstashStep$DescriptorImpl

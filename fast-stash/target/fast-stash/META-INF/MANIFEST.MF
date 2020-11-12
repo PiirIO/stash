@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Built-By: max
 Created-By: Apache Maven
-Build-Jdk: 14.0.2
+Build-Jdk: 11.0.9
 Extension-Name: fast-stash
 Specification-Title: The Jenkins Plugins Parent POM Project
 Implementation-Title: fast-stash
@@ -13,7 +13,8 @@ Minimum-Java-Version: 1.8
 Plugin-Version: 3.0
 Hudson-Version: 2.164.3
 Jenkins-Version: 2.164.3
-Plugin-Dependencies: workflow-step-api:2.20,structs:1.20
+Plugin-Dependencies: workflow-api:2.37,workflow-step-api:2.20,structs:
+ 1.20
 Plugin-Developers: 
 Plugin-License-Name: MIT License
 Plugin-License-Url: https://opensource.org/licenses/MIT

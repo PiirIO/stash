@@ -6,14 +6,15 @@ Minimum-Java-Version: 1.8
 Plugin-Version: 3.0
 Hudson-Version: 2.164.3
 Jenkins-Version: 2.164.3
-Plugin-Dependencies: workflow-step-api:2.20,structs:1.20
+Plugin-Dependencies: workflow-api:2.37,workflow-step-api:2.20,structs:
+ 1.20
 Plugin-Developers: 
 Plugin-License-Name: MIT License
 Plugin-License-Url: https://opensource.org/licenses/MIT
 Plugin-ScmUrl: https://github.com/jenkinsci/plugin-pom/fast-stash
-Libraries: /home/max/git/stash/fast-stash/target/classes,/home/max/.m2
- /repository/com/google/code/findbugs/annotations/3.0.0/annotations-3.
- 0.0.jar,/home/max/.m2/repository/org/anarres/lzo/lzo-core/1.0.6/lzo-c
- ore-1.0.6.jar
-Resource-Path: /home/max/git/stash/fast-stash/src/main/webapp
+Libraries: /home/max/Documents/git/stash/fast-stash/target/classes,/ho
+ me/max/.m2/repository/com/google/code/findbugs/annotations/3.0.0/anno
+ tations-3.0.0.jar,/home/max/.m2/repository/org/anarres/lzo/lzo-core/1
+ .0.6/lzo-core-1.0.6.jar
+Resource-Path: /home/max/Documents/git/stash/fast-stash/src/main/webapp
 

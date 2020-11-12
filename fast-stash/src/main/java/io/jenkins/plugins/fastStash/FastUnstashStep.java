@@ -50,8 +50,7 @@ public class FastUnstashStep extends Step {
 
         @Override
         protected Void run() throws Exception {
-            // Todo: Compressor.None for testing State
-            FastStashManager.unstash(getContext().get(Run.class), name, getContext().get(FilePath.class), getContext().get(Launcher.class), getContext().get(EnvVars.class), getContext().get(TaskListener.class), Compression.NONE);
+            FastStashManager.unstash(getContext().get(Run.class), name, getContext().get(FilePath.class), getContext().get(Launcher.class), getContext().get(EnvVars.class), getContext().get(TaskListener.class));
             return null;
         }
 
