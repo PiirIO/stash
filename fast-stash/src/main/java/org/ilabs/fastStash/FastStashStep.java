@@ -1,4 +1,4 @@
-package io.jenkins.plugins.fastStash;
+package org.ilabs.fastStash;
 
 import com.google.common.collect.ImmutableSet;
 import hudson.*;

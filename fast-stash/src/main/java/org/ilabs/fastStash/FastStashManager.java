@@ -1,4 +1,4 @@
-package io.jenkins.plugins.fastStash;
+package org.ilabs.fastStash;
 
 import edu.umd.cs.findbugs.annotations.*;
 import hudson.*;

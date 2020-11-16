@@ -1,1 +1,1 @@
-io.jenkins.plugins.fastStash.FastStashManager$CopyStashesAndArtifacts
+org.ilabs.fastStash.FastStashManager$CopyStashesAndArtifacts
