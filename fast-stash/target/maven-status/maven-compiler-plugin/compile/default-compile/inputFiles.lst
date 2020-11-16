@@ -1,4 +1,4 @@
-C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\main\java\io\jenkins\plugins\fastStash\FastStashManager.java
-C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\main\java\io\jenkins\plugins\fastStash\FastUnstashStep.java
-C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\main\java\io\jenkins\plugins\fastStash\FastStashStep.java
-C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\main\java\io\jenkins\plugins\fastStash\Compression.java
+C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\main\java\org\ilabs\Compression.java
+C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\main\java\org\ilabs\FastUnstashStep.java
+C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\main\java\org\ilabs\FastStashManager.java
+C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\main\java\org\ilabs\FastStashStep.java

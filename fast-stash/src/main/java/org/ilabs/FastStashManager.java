@@ -1,4 +1,4 @@
-package org.ilabs.fastStash;
+package org.ilabs;
 
 import edu.umd.cs.findbugs.annotations.*;
 import hudson.*;

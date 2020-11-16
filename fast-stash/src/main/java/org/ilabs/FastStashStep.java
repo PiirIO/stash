@@ -1,4 +1,4 @@
-package org.ilabs.fastStash;
+package org.ilabs;
 
 import com.google.common.collect.ImmutableSet;
 import hudson.*;

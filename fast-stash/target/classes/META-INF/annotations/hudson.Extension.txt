@@ -1,4 +1,4 @@
 # informational; use java -jar sezpoz.jar to see authoritative contents
-org.ilabs.fastStash.FastStashManager$CopyStashesAndArtifacts
-org.ilabs.fastStash.FastStashStep$DescriptorImpl
-org.ilabs.fastStash.FastUnstashStep$DescriptorImpl
+org.ilabs.FastStashManager$CopyStashesAndArtifacts
+org.ilabs.FastStashStep$DescriptorImpl
+org.ilabs.FastUnstashStep$DescriptorImpl

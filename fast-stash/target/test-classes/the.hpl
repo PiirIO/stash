@@ -12,9 +12,11 @@ Plugin-Developers:
 Plugin-License-Name: MIT License
 Plugin-License-Url: https://opensource.org/licenses/MIT
 Plugin-ScmUrl: https://github.com/jenkinsci/plugin-pom/fast-stash
-Libraries: /home/max/Documents/git/stash/fast-stash/target/classes,/ho
- me/max/.m2/repository/com/google/code/findbugs/annotations/3.0.0/anno
- tations-3.0.0.jar,/home/max/.m2/repository/org/anarres/lzo/lzo-core/1
- .0.6/lzo-core-1.0.6.jar
-Resource-Path: /home/max/Documents/git/stash/fast-stash/src/main/webapp
+Libraries: C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\main\r
+ esources,C:\Users\benpi\Documents\GitHub\stash\fast-stash\target\clas
+ ses,C:\Users\benpi\.m2\repository\com\google\code\findbugs\annotation
+ s\3.0.0\annotations-3.0.0.jar,C:\Users\benpi\.m2\repository\org\anarr
+ es\lzo\lzo-core\1.0.6\lzo-core-1.0.6.jar
+Resource-Path: C:\Users\benpi\Documents\GitHub\stash\fast-stash\src\ma
+ in\webapp
 
