@@ -23,9 +23,9 @@ public class FastStashStep extends Step {
     private @CheckForNull
     String excludes;
 
-    private final boolean useDefaultExcludes = true;
-    private final boolean allowEmpty = false;
-    private final boolean compress = false;
+    private boolean useDefaultExcludes = true;
+    private boolean allowEmpty = false;
+    private boolean compress = false;
 
     @DataBoundConstructor
     public FastStashStep(@Nonnull String name) {
@@ -65,6 +65,21 @@ public class FastStashStep extends Step {
     @DataBoundSetter
     public void setExcludes(String excludes) {
         this.excludes = Util.fixEmpty(excludes);
+    }
+
+    @DataBoundSetter
+    public void setAllowEmpty(boolean allowEmpty) {
+        this.allowEmpty = allowEmpty;
+    }
+
+    @DataBoundSetter
+    public void setUseDefaultExcludes(boolean useDefaultExcludes) {
+        this.useDefaultExcludes = useDefaultExcludes;
+    }
+
+    @DataBoundSetter
+    public void setCompress(boolean compress) {
+        this.compress = compress;
     }
 
     @Override
