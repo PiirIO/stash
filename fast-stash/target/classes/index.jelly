@@ -1,4 +1,0 @@
-<?jelly escape-by-default='true'?>
-<div>
-  Plugin that defines Pipeline API.
-</div>
