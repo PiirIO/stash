@@ -45,6 +45,18 @@ public class FastStashStep extends Step {
         return excludes;
     }
 
+    public boolean isCompress(){
+        return compress;
+    }
+
+    public boolean isAllowEmpty(){
+        return allowEmpty;
+    }
+
+    public boolean isUseDefaultExcludes(){
+        return useDefaultExcludes;
+    }
+
     @DataBoundSetter
     public void setIncludes(String includes) {
         this.includes = Util.fixEmpty(includes);
