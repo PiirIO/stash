@@ -22,11 +22,10 @@ public class FastStashStep extends Step {
     String includes;
     private @CheckForNull
     String excludes;
+    private boolean compress;
 
     private final boolean useDefaultExcludes = true;
     private final boolean allowEmpty = false;
-
-    private Compression compression;
 
     @DataBoundConstructor
     public FastStashStep(@Nonnull String name) {
@@ -53,12 +52,8 @@ public class FastStashStep extends Step {
     }
 
     @DataBoundSetter
-    public void setCompression(Integer compression) {
-        if (compression != null) {
-            this.compression = Compression.LZO1X;
-        } else {
-            this.compression = Compression.NONE;
-        }
+    public void setCompress(Boolean compress) {
+        this.compress = compress;
     }
 
     @Override

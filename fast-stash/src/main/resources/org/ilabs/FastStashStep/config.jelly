@@ -15,4 +15,7 @@
     <f:entry field="allowEmpty" title="Allow empty stash">
         <f:checkbox default="false" />
     </f:entry>
+    <f:entry field="compress" title="Compress">
+        <f:checkbox default="false" />
+    </f:entry>
 </j:jelly>
