@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Built-By: max
 Created-By: Apache Maven
-Build-Jdk: 11.0.9
+Build-Jdk: 11.0.9.1
 Extension-Name: fast-stash
 Specification-Title: The Jenkins Plugins Parent POM Project
 Implementation-Title: fast-stash

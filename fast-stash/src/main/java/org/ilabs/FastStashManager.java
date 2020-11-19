@@ -29,7 +29,7 @@ public class FastStashManager {
 
     @SuppressFBWarnings(value = "RV_RETURN_VALUE_IGNORED_BAD_PRACTICE", justification = "fine if mkdirs returns false")
     public static void stash(@Nonnull Run<?, ?> build, @Nonnull String name, @Nonnull FilePath workspace, @Nonnull Launcher launcher, @Nonnull EnvVars env, @Nonnull TaskListener listener,
-                             @CheckForNull String includes, @CheckForNull String excludes, boolean useDefaultExcludes, boolean allowEmpty) throws IOException, InterruptedException {
+                             @CheckForNull String includes, @CheckForNull String excludes, boolean useDefaultExcludes, boolean allowEmpty, boolean compress) throws IOException, InterruptedException {
         Jenkins.checkGoodName(name);
         StashAwareArtifactManager saam = stashAwareArtifactManager(build);
         if (saam != null) {
@@ -41,17 +41,27 @@ public class FastStashManager {
         if (storage.isFile()) {
             listener.getLogger().println("Warning: overwriting stash ‘" + name + "’");
         }
-        try (OutputStream os = new FileOutputStream(storage)) {
-            LzoAlgorithm alg = LzoAlgorithm.LZO1X;
-            LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(alg, null);
-            LzoOutputStream stream = new LzoOutputStream(os, compressor, 256);
-            stream.write(256);
+        if(compress) {
+            try (OutputStream os = new FileOutputStream(storage)) {
+                LzoAlgorithm alg = LzoAlgorithm.LZO1X;
+                LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(alg, null);
+                LzoOutputStream stream = new LzoOutputStream(os, compressor, 256);
+                stream.write(256);
 
-            int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
-            if (count == 0 && !allowEmpty) {
-                throw new AbortException("No files included in stash ‘" + name + "’");
+                int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
+                if (count == 0 && !allowEmpty) {
+                    throw new AbortException("No files included in stash ‘" + name + "’");
+                }
+                listener.getLogger().println("Stashed " + count + " file(s) with LZ01X");
             }
-            listener.getLogger().println("Stashed " + count + " file(s)");
+        } else {
+            try (OutputStream os = new FileOutputStream(storage)) {
+                int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
+                if (count == 0 && !allowEmpty) {
+                    throw new AbortException("No files included in stash ‘" + name + "’");
+                }
+                listener.getLogger().println("Stashed " + count + " file(s)");
+            }
         }
     }
 

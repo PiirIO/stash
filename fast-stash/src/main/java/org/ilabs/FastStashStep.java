@@ -101,7 +101,7 @@ public class FastStashStep extends Step {
         @Override
         protected Void run() throws Exception {
             FastStashManager.stash(getContext().get(Run.class), step.name, getContext().get(FilePath.class), getContext().get(Launcher.class), getContext().get(EnvVars.class), getContext().get(TaskListener.class), step.includes, step.excludes,
-                    step.useDefaultExcludes, step.allowEmpty);
+                    step.useDefaultExcludes, step.allowEmpty, step.compress);
             return null;
         }
     }
