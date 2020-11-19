@@ -1,4 +1,4 @@
-package io.jenkins.plugins.fastStash;
+package org.ilabs;
 
 import com.google.common.collect.ImmutableSet;
 import hudson.*;
@@ -23,10 +23,9 @@ public class FastStashStep extends Step {
     private @CheckForNull
     String excludes;
 
-    private final boolean useDefaultExcludes = true;
-    private final boolean allowEmpty = false;
-
-    private Compression compression;
+    private boolean useDefaultExcludes = true;
+    private boolean allowEmpty = false;
+    private boolean compress = false;
 
     @DataBoundConstructor
     public FastStashStep(@Nonnull String name) {
@@ -42,6 +41,22 @@ public class FastStashStep extends Step {
         return includes;
     }
 
+    public String getExcludes() {
+        return excludes;
+    }
+
+    public boolean isCompress(){
+        return compress;
+    }
+
+    public boolean isAllowEmpty(){
+        return allowEmpty;
+    }
+
+    public boolean isUseDefaultExcludes(){
+        return useDefaultExcludes;
+    }
+
     @DataBoundSetter
     public void setIncludes(String includes) {
         this.includes = Util.fixEmpty(includes);
@@ -53,12 +68,18 @@ public class FastStashStep extends Step {
     }
 
     @DataBoundSetter
-    public void setCompression(Integer compression) {
-        if (compression != null) {
-            this.compression = Compression.LZO1X;
-        } else {
-            this.compression = Compression.NONE;
-        }
+    public void setAllowEmpty(boolean allowEmpty) {
+        this.allowEmpty = allowEmpty;
+    }
+
+    @DataBoundSetter
+    public void setUseDefaultExcludes(boolean useDefaultExcludes) {
+        this.useDefaultExcludes = useDefaultExcludes;
+    }
+
+    @DataBoundSetter
+    public void setCompress(boolean compress) {
+        this.compress = compress;
     }
 
     @Override
