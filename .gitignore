@@ -1,0 +1,9 @@
+target/
+work*/
+
+# IntelliJ project files 
+*.iml
+*.ipr
+*.iws
+.idea/
+
