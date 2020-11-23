@@ -22,7 +22,7 @@ import java.util.*;
 
 public class FastStashManager {
 
-    private static final String SUFFIX = ".tar.gz";
+    private static final String SUFFIX = ".tar";
 
     private FastStashManager() {
     }
