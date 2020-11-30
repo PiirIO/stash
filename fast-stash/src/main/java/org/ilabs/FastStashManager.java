@@ -41,27 +41,22 @@ public class FastStashManager {
         if (storage.isFile()) {
             listener.getLogger().println("Warning: overwriting stash ‘" + name + "’");
         }
-        if(compress) {
-            try (OutputStream os = new FileOutputStream(storage)) {
+        try (OutputStream os = new FileOutputStream(storage)) {
+            int count;
+            if (compress) {
                 LzoAlgorithm alg = LzoAlgorithm.LZO1X;
                 LzoCompressor compressor = LzoLibrary.getInstance().newCompressor(alg, null);
                 LzoOutputStream stream = new LzoOutputStream(os, compressor, 256);
                 stream.write(256);
 
-                int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
-                if (count == 0 && !allowEmpty) {
-                    throw new AbortException("No files included in stash ‘" + name + "’");
-                }
-                listener.getLogger().println("Stashed " + count + " file(s) with LZ01X");
+                count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
+            } else {
+                count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
             }
-        } else {
-            try (OutputStream os = new FileOutputStream(storage)) {
-                int count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
-                if (count == 0 && !allowEmpty) {
-                    throw new AbortException("No files included in stash ‘" + name + "’");
-                }
-                listener.getLogger().println("Stashed " + count + " file(s)");
+            if (count == 0 && !allowEmpty) {
+                throw new AbortException("No files included in stash ‘" + name + "’");
             }
+            listener.getLogger().println("Stashed " + count + " file(s)");
         }
     }
 
