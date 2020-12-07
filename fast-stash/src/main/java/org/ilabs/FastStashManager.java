@@ -74,6 +74,7 @@ public class FastStashManager {
         try {
             new FilePath(storage).untar(workspace, FilePath.TarCompression.NONE);
         } catch (Exception e){
+            listener.getLogger().println("[ERROR]: " + e);
             InputStream in = new FileInputStream(storage);
             LzoAlgorithm alg = LzoAlgorithm.LZO1X;
             LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(alg, null);
