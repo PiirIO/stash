@@ -71,16 +71,14 @@ public class FastStashManager {
         if (!storage.isFile()) {
             throw new AbortException("No such saved stash ‘" + name + "’");
         }
-
-        InputStream in = new FileInputStream(storage);
-        LzoAlgorithm alg = LzoAlgorithm.LZO1X;
-        LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(alg, null);
-        LzoInputStream stream = new LzoInputStream(in, decompressor);
-        stream.close();
-
         try {
             new FilePath(storage).untar(workspace, FilePath.TarCompression.NONE);
         } catch (Exception e){
+            InputStream in = new FileInputStream(storage);
+            LzoAlgorithm alg = LzoAlgorithm.LZO1X;
+            LzoDecompressor decompressor = LzoLibrary.getInstance().newDecompressor(alg, null);
+            LzoInputStream stream = new LzoInputStream(in, decompressor);
+            stream.close();
             new FilePath(storage).unzip(workspace);
         }
     }
