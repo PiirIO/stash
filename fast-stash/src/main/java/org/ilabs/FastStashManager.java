@@ -49,7 +49,7 @@ public class FastStashManager {
                 LzoOutputStream stream = new LzoOutputStream(os, compressor, 256);
                 stream.write(256);
 
-                count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
+                count = workspace.zip(os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
             } else {
                 count = workspace.archive(ArchiverFactory.TAR, os, new DirScanner.Glob(Util.fixEmpty(includes) == null ? "**" : includes, excludes, useDefaultExcludes));
             }
